@@ -12,6 +12,12 @@ list(GET CAPTURES 1 MINOR)
 list(GET CAPTURES 2 PATCH)
 set(PROJECT_VERSION "${MAJOR}.${MINOR}-${PATCH}")
 
+# Export all symbols when building a DLL on MSVC
+if(WIN32 AND MSVC AND BUILD_SHARED_LIBS)
+  set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+endif()
+
+# Build target
 set(SOURCES_DIR "CUnit/Sources")
 set(HEADERS_DIR "CUnit/Headers")
 
