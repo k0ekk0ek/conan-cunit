@@ -7,7 +7,7 @@
 void
 test_func(void)
 {
-    printf("%s\n", __func__);
+    printf("test_func\n");
     CU_ASSERT_EQUAL(2, 2);
     CU_ASSERT_NOT_EQUAL(0, -2);
     CU_ASSERT_FALSE(0);
@@ -17,14 +17,14 @@ test_func(void)
 static int
 suite_init_func(void)
 {
-    printf("%s\n", __func__);
+    printf("suite_init_func\n");
     return 0;
 }
 
 static int
 suite_fini_func(void)
 {
-    printf("%s\n", __func__);
+    printf("suite_fini_func\n");
     return 0;
 }
 
