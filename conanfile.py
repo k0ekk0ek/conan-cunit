@@ -14,7 +14,7 @@ class CUnitConan(ConanFile):
     description = "A Unit Testing Framework for C"
     license = "MIT"
     exports = ["LICENSE.md"]
-    exports_sources = ["CMakeLists.txt"]
+    exports_sources = ["CMakeLists.txt", "snprintf.patch"]
     generators = "cmake"
     settings = "os", "arch", "compiler", "build_type"
     options = {"shared": [True, False], "fPIC": [True, False]}
@@ -32,6 +32,9 @@ class CUnitConan(ConanFile):
         extracted_dir = "CUnit-" + self.version
         os.rename(extracted_dir, self.source_subfolder)
         shutil.copy("CMakeLists.txt", self.source_subfolder)
+        # Do not define snprintf on Windows if _MSC_VER is greater or equal
+        # than 1900.
+        tools.patch(patch_file='snprintf.patch')
 
     def configure(self):
         del self.settings.compiler.libcxx
