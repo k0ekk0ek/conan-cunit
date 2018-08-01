@@ -10,7 +10,7 @@ class CUnitConan(ConanFile):
     name = "cunit"
     version = "2.1-3"
     homepage = "http://cunit.sourceforge.net/"
-    url = "https://github.com/k0ekk0ek/conan-cunit"
+    url = "https://github.com/atolab/conan-cunit"
     description = "A Unit Testing Framework for C"
     license = "MIT"
     exports = ["LICENSE.md"]
