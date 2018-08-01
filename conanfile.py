@@ -32,8 +32,8 @@ class CUnitConan(ConanFile):
         extracted_dir = "CUnit-" + self.version
         os.rename(extracted_dir, self.source_subfolder)
         shutil.copy("CMakeLists.txt", self.source_subfolder)
-        # Do not define snprintf on Windows if _MSC_VER is greater or equal
-        # than 1900.
+        # Do not define snprintf on Windows if _MSC_VER is greater than or
+        # equal to 1900.
         tools.patch(patch_file='snprintf.patch')
 
     def configure(self):
