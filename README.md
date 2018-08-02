@@ -2,7 +2,7 @@
 
 | Bintray | Windows | Linux & macOS |
 |:--------:|:---------:|:-----------------:|
-|[ ![Download](https://api.bintray.com/packages/k0ekk0ek/public-conan/CUnit%3Ak0ekk0ek/images/download.svg) ](https://bintray.com/k0ekk0ek/public-conan/cunit%3Ak0ekk0ek/_latestVersion)|[![Build status](https://ci.appveyor.com/api/projects/status/2vdo5kprlkfp5clr/branch/stable/2.1-3?svg=true)](https://ci.appveyor.com/project/k0ekk0ek/conan-cunit/branch/stable/2.1-3)|[![Build Status](https://travis-ci.org/k0ekk0ek/conan-cunit.svg?branch=stable%2F2.1-3)](https://travis-ci.org/k0ekk0ek/conan-cunit)|
+|BINTRAY_BADGE_URL|APPVEYOR_BADGE_URL|TRAVIS_BADGE_URL|
 
 ## Conan.io Information
 
