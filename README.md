@@ -2,7 +2,7 @@
 
 | Bintray | Windows | Linux & macOS |
 |:--------:|:---------:|:-----------------:|
-|BINTRAY_BADGE_URL|APPVEYOR_BADGE_URL|TRAVIS_BADGE_URL|
+|[ ![Download](https://api.bintray.com/packages/atolab/public-conan/cunit%3Aatolab/images/download.svg?version=2.1-3%3Astable) ](https://bintray.com/atolab/public-conan/cunit%3Aatolab/2.1-3%3Astable/link)|[![Build status](https://ci.appveyor.com/api/projects/status/18g43ctry4j9tn0r/branch/stable/2.1-3?svg=true)](https://ci.appveyor.com/project/ATOLab/conan-cunit/branch/stable/2.1-3)|[![Build Status](https://travis-ci.org/atolab/conan-cunit.svg?branch=stable%2F2.1-3)](https://travis-ci.org/atolab/conan-cunit)|
 
 ## Conan.io Information
 
