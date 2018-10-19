@@ -19,8 +19,8 @@ class CUnitConan(ConanFile):
     settings = "os", "arch", "compiler", "build_type"
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = "shared=True", "fPIC=True"
-    source_subfolder = "source_subfolder"
-    build_subfolder = "build_subfolder"
+    _source_subfolder = "source_subfolder"
+    _build_subfolder = "build_subfolder"
 
     def config_options(self):
         if self.settings.os == "Windows":
@@ -30,8 +30,8 @@ class CUnitConan(ConanFile):
         source_url = "https://sourceforge.net/projects/cunit"
         tools.get("{0}/files/{1}/{2}/{1}-{2}.tar.bz2".format(source_url, "CUnit", self.version))
         extracted_dir = "CUnit-" + self.version
-        os.rename(extracted_dir, self.source_subfolder)
-        shutil.copy("CMakeLists.txt", self.source_subfolder)
+        os.rename(extracted_dir, self._source_subfolder)
+        shutil.copy("CMakeLists.txt", self._source_subfolder)
         # Do not define snprintf on Windows if _MSC_VER is greater than or
         # equal to 1900.
         tools.patch(patch_file='snprintf.patch')
@@ -39,18 +39,18 @@ class CUnitConan(ConanFile):
     def configure(self):
         del self.settings.compiler.libcxx
 
-    def configure_cmake(self):
+    def _configure_cmake(self):
         cmake = CMake(self)
-        cmake.configure(source_folder=self.source_subfolder)
+        cmake.configure(source_folder=self._source_subfolder)
         return cmake
 
     def build(self):
-        cmake = self.configure_cmake()
+        cmake = self._configure_cmake()
         cmake.build()
 
     def package(self):
-        self.copy(pattern="COPYING", dst="licenses", src=self.source_subfolder, keep_path=False)
-        cmake = self.configure_cmake()
+        self.copy(pattern="COPYING", dst="licenses", src=self._source_subfolder, keep_path=False)
+        cmake = self._configure_cmake()
         cmake.install()
 
     def package_info(self):
