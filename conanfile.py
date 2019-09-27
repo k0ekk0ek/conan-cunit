@@ -18,7 +18,7 @@ class CUnitConan(ConanFile):
     generators = "cmake"
     settings = "os", "arch", "compiler", "build_type"
     options = {"shared": [True, False], "fPIC": [True, False]}
-    default_options = "shared=True", "fPIC=True"
+    default_options = {'shared': True, 'fPIC': True}
     _source_subfolder = "source_subfolder"
     _build_subfolder = "build_subfolder"
 
