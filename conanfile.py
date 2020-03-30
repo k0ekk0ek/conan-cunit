@@ -10,7 +10,6 @@ class CUnitConan(ConanFile):
     url = "https://github.com/atolab/conan-cunit"
     description = "A Unit Testing Framework for C"
     license = "MIT"
-    exports = ["LICENSE.md"]
     exports_sources = ["CMakeLists.txt", "snprintf.patch"]
     generators = "cmake"
     settings = "os", "arch", "compiler", "build_type"
