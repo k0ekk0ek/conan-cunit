@@ -11,7 +11,8 @@ class CUnitConan(ConanFile):
     description = "A Unit Testing Framework for C"
     license = "MIT"
     exports_sources = ["CMakeLists.txt", "snprintf.patch", "format.patch",
-                       "fprintf-null.patch", "ignore-unused-parameter.patch"]
+                       "fprintf-null.patch", "ignore-unused-parameter.patch",
+                       "fix-unused-result.patch"]
     generators = "cmake"
     settings = "os", "arch", "compiler", "build_type"
     options = {"shared": [True, False], "fPIC": [True, False]}
@@ -38,6 +39,8 @@ class CUnitConan(ConanFile):
         tools.patch(patch_file='fprintf-null.patch')
         # Ignore unused parameter.
         tools.patch(patch_file='ignore-unused-parameter.patch')
+        # Fix unused result.
+        tools.patch(patch_file='fix-unused-result.patch')
 
     def configure(self):
         del self.settings.compiler.libcxx
