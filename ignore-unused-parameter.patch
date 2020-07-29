@@ -1,0 +1,10 @@
+--- source_subfolder/CUnit/Sources/Framework/TestDB.c	2014-04-24 02:54:45.000000000 +0200
++++ source_subfolder/CUnit/Sources/Framework/TestDB.c.patched	2020-07-30 00:42:03.783464904 +0200
+@@ -983,6 +983,7 @@
+   unsigned int i;
+ 
+   assert(NULL != pRegistry);
++  (void)pRegistry;
+ 
+   if ((index > 0) && (index <= f_pTestRegistry->uiNumberOfSuites)) {
+     result = f_pTestRegistry->pSuite;

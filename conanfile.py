@@ -11,7 +11,7 @@ class CUnitConan(ConanFile):
     description = "A Unit Testing Framework for C"
     license = "MIT"
     exports_sources = ["CMakeLists.txt", "snprintf.patch", "format.patch",
-                       "fprintf-null.patch"]
+                       "fprintf-null.patch", "ignore-unused-parameter.patch"]
     generators = "cmake"
     settings = "os", "arch", "compiler", "build_type"
     options = {"shared": [True, False], "fPIC": [True, False]}
@@ -36,6 +36,8 @@ class CUnitConan(ConanFile):
         tools.patch(patch_file='format.patch')
         # Avoid passing null pointer to fprintf.
         tools.patch(patch_file='fprintf-null.patch')
+        # Ignore unused parameter.
+        tools.patch(patch_file='ignore-unused-parameter.patch')
 
     def configure(self):
         del self.settings.compiler.libcxx
