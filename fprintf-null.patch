@@ -1,0 +1,25 @@
+--- source_subfolder/CUnit/Sources/Automated/Automated.c	2014-04-24 02:54:45.000000000 +0200
++++ source_subfolder/CUnit/Sources/Automated/Automated.c.patched	2020-07-30 00:27:44.005764370 +0200
+@@ -334,7 +334,21 @@
+         assert((NULL != pTempFailure->pTest) && (pTempFailure->pTest == pTest));
+ 
+         if (NULL != pTempFailure->strCondition) {
+-          CU_translate_special_characters(pTempFailure->strCondition, szTemp, sizeof(szTemp));
++          cur_len = CU_translated_strlen(pTempFailure->strCondition) + 1;
++        }
++        else {
++          cur_len = 1;
++        }
++        if (cur_len > szTemp_len) {
++          szTemp_len = cur_len;
++          if (NULL != szTemp) {
++            CU_FREE(szTemp);
++          }
++          szTemp = (char *)CU_MALLOC(szTemp_len);
++        }
++
++        if (NULL != pTempFailure->strCondition) {
++          CU_translate_special_characters(pTempFailure->strCondition, szTemp, szTemp_len);
+         }
+         else {
+           szTemp[0] = '\0';
