@@ -10,7 +10,7 @@ class CUnitConan(ConanFile):
     url = "https://github.com/bincrafters/conan-cunit"
     description = "A Unit Testing Framework for C"
     license = "MIT"
-    exports_sources = ["CMakeLists.txt", "snprintf.patch"]
+    exports_sources = ["CMakeLists.txt", "snprintf.patch", "format.patch"]
     generators = "cmake"
     settings = "os", "arch", "compiler", "build_type"
     options = {"shared": [True, False], "fPIC": [True, False]}
@@ -31,6 +31,8 @@ class CUnitConan(ConanFile):
         # Do not define snprintf on Windows if _MSC_VER is greater than or
         # equal to 1900.
         tools.patch(patch_file='snprintf.patch')
+        # Port format patch (fab87aac) from https://gitlab.com/cunity/cunit
+        tools.patch(patch_file='format.patch')
 
     def configure(self):
         del self.settings.compiler.libcxx
